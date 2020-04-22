@@ -25,16 +25,17 @@ public class BootStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        Publisher helion = new Publisher("Helion", "Słoneczna 1", "Warszawa", "mazowieckie", "23433");
+        publisherRepository.save(helion);
+
         Author eric = new Author("Eric", "Evans");
         Book ddd = new Book("Domain Driven Design", "123123123");
-        Publisher helion = new Publisher("Helion", "Słoneczna 1", "Warszawa", "mazowieckie", "23433");
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
-        helion.getBooks().add(ddd);
+//        helion.getBooks().add(ddd);
 
         authorRepository.save(eric);
         bookRepository.save(ddd);
-        publisherRepository.save(helion);
 
         Author rod = new Author("Rod", "Johnson");
         Book noEJB = new Book("J2EE Development without EJB", "adfar23434");
