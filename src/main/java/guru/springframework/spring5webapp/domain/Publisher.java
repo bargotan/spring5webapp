@@ -17,10 +17,19 @@ public class Publisher {
     private String state;
     private String zip;
 
-//    @OneToMany
-//    private Set<Book> books;
+    @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<>();
 
     public Publisher() {
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public Publisher(String name, String addressLine, String city, String state, String zip) {
