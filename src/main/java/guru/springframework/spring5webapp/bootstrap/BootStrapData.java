@@ -34,21 +34,29 @@ public class BootStrapData implements CommandLineRunner {
         ddd.getAuthors().add(eric);
 //        helion.getBooks().add(ddd);
 
+        ddd.setPublisher(helion);
+        helion.getBooks().add(ddd);
+
         authorRepository.save(eric);
         bookRepository.save(ddd);
+        publisherRepository.save(helion);
 
         Author rod = new Author("Rod", "Johnson");
         Book noEJB = new Book("J2EE Development without EJB", "adfar23434");
         rod.getBooks().add(noEJB);
         noEJB.getAuthors().add(rod);
+        noEJB.setPublisher(helion);
+        helion.getBooks().add(noEJB);
 
         authorRepository.save(rod);
         bookRepository.save(noEJB);
+        publisherRepository.save(helion);
 
         System.out.println("Started in Bootstrap. Data initialized...");
         System.out.println("Number of books: " + bookRepository.count());
         System.out.println("Number of authors: " + authorRepository.count());
         System.out.println("Number of publishers: " + publisherRepository.count());
+        System.out.println("Helion number of books: " + helion.getBooks().size());
 
     }
 }
